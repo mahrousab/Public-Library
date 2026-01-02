@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MyBook/MyBook.csproj" />
+  <Project Path="TestMyLibrary/TestMyLibrary.csproj" Id="fd67a449-e73b-4e38-a048-5a18590588cd" />
+</Solution>
