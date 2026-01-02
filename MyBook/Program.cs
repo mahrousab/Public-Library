@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using MyBook.Data.Models;
 using MyBook.Exceptions;
+using MyBook.Hubs;
 using MyBook.IRepositories;
 using MyBook.Repository;
 using Serilog;
@@ -49,6 +50,22 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         )
     )
 );
+
+builder.Services.AddSignalR();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("BlazorPolicy", policy =>
+    {
+        policy
+            .WithOrigins("https://localhost:5002")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
+
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
@@ -82,6 +99,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.MapHub<NotificationHub>("/hubs/notifications");
+
+app.UseCors("BlazorPolicy");
 
 // Fix for CS7036: Pass the required ILoggerFactory argument to ConfigureExceptionHandler
 var loggerFactory = app.Services.GetRequiredService<ILoggerFactory>();

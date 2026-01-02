@@ -1,0 +1,39 @@
+﻿@page "/notifications"
+@using BlazorAppForUsingSignaRWithWebSocket.Services
+@inject SignalRService SignalR
+
+<h3>SignalR Notifications</h3>
+
+<input @bind="user" placeholder="User" />
+<input @bind="message" placeholder="Message" />
+<button @onclick="Send">Send</button>
+
+<ul>
+    @foreach (var m in messages)
+    {
+        <li>@m</li>
+    }
+</ul>
+
+@code {
+    string user = "Client";
+    string message = "";
+    List<string> messages = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        SignalR.OnMessageReceived += (u, m) =>
+        {
+            messages.Add($"{u}: {m}");
+            InvokeAsync(StateHasChanged);
+        };
+
+        await SignalR.StartAsync();
+    }
+
+    async Task Send()
+    {
+        await SignalR.SendAsync(user, message);
+        message = "";
+    }
+}

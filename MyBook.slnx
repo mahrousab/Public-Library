@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="BlazorAppForUsingSignaRWithWebSocket/BlazorAppForUsingSignaRWithWebSocket.csproj" Id="6c294eff-6be1-40b3-8fa5-e2d00a5cf01b" />
   <Project Path="MyBook/MyBook.csproj" />
   <Project Path="TestMyLibrary/TestMyLibrary.csproj" Id="fd67a449-e73b-4e38-a048-5a18590588cd" />
 </Solution>
