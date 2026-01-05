@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyBook.Controllers.v2
+namespace PublicLibrary.Controllers.v2
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/Test Controller for url versioning")]

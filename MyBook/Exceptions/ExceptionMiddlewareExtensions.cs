@@ -1,4 +1,4 @@
-﻿namespace MyBook.Exceptions
+﻿namespace PublicLibrary.Exceptions
 {
     public static class ExceptionMiddlewareExtensions
     {
@@ -15,7 +15,7 @@
                     {
                         var logger = loggerFactory.CreateLogger("GlobalExceptionHandler");
                         logger.LogError($"Something went wrong: {contextFeature.Error}");
-                        var errorResponse = new MyBook.ViewModels.ErrorVM
+                        var errorResponse = new PublicLibrary.ViewModels.ErrorVM
                         {
                             StatusCode = context.Response.StatusCode,
                             Message = "Internal Server Error.",

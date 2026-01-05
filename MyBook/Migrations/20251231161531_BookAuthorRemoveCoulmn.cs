@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MyBook.Migrations
+namespace PublicLibrary.Migrations
 {
     /// <inheritdoc />
     public partial class BookAuthorRemoveCoulmn : Migration

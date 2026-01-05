@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MyBook.IRepositories;
+using PublicLibrary.IRepositories;
 
-namespace MyBook.Controllers
+namespace PublicLibrary.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

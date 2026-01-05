@@ -1,8 +1,8 @@
-﻿using MyBook.Data.Models;
-using MyBook.IRepositories;
-using MyBook.ViewModels;
+﻿using PublicLibrary.Data.Models;
+using PublicLibrary.IRepositories;
+using PublicLibrary.ViewModels;
 
-namespace MyBook.Repository
+namespace PublicLibrary.Repository
 {
     public class BookRepository :IBookRepository
     {

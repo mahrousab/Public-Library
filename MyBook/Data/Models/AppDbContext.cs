@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
-namespace MyBook.Data.Models
+namespace PublicLibrary.Data.Models
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext: IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext>options) : base(options)
         {
@@ -13,6 +15,7 @@ namespace MyBook.Data.Models
         public DbSet<Author_Book> Author_Book { get; set; }
         public DbSet<Publisher> Publisher { get; set; }
         public DbSet<Log> Logs { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

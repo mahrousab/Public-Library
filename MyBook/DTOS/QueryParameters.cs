@@ -1,4 +1,4 @@
-﻿namespace MyBook.DTOS
+﻿namespace PublicLibrary.DTOS
 {
     public class QueryParameters
     {

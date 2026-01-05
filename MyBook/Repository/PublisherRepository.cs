@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MyBook.Data.Models;
-using MyBook.DTOS;
-using MyBook.Execption;
-using MyBook.IRepositories;
-using MyBook.ViewModels;
+using PublicLibrary.Data.Models;
+using PublicLibrary.DTOS;
+using PublicLibrary.Execption;
+using PublicLibrary.IRepositories;
+using PublicLibrary.ViewModels;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
-namespace MyBook.Repository
+namespace PublicLibrary.Repository
 {
     public class PublisherRepository : IPublisherRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace MyBook.IRepositories
+﻿namespace PublicLibrary.IRepositories
 {
     public interface IAuthorRepository
     {

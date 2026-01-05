@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyBook.Data.Models;
+using PublicLibrary.Data.Models;
 
 #nullable disable
 
-namespace MyBook.Migrations
+namespace PublicLibrary.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20251216160630_ManyToManyAdded")]

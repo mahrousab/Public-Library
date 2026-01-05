@@ -1,6 +1,6 @@
-﻿using MyBook.ViewModels;
+﻿using PublicLibrary.ViewModels;
 
-namespace MyBook.IRepositories
+namespace PublicLibrary.IRepositories
 {
     public interface IBookRepository
     {

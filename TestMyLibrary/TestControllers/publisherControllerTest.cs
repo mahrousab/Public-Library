@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MyBook.Controllers;
-using MyBook.Data.Models;
-using MyBook.DTOS;
-using MyBook.Repository;
-using MyBook.ViewModels;
+using PublicLibrary.Controllers;
+using PublicLibrary.Data.Models;
+using PublicLibrary.DTOS;
+using PublicLibrary.Repository;
+using PublicLibrary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MyBook.DTOS;
-using MyBook.Execption;
-using MyBook.IRepositories;
-using MyBook.Repository;
-using MyBook.ViewModels;
+using PublicLibrary.DTOS;
+using PublicLibrary.Execption;
+using PublicLibrary.IRepositories;
+using PublicLibrary.Repository;
+using PublicLibrary.ViewModels;
 using System.Data;
 
-namespace MyBook.Controllers
+namespace PublicLibrary.Controllers
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/publisher")]
@@ -30,7 +31,7 @@ namespace MyBook.Controllers
         }
 
         [HttpPost]
-
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.Publisher)]
         public IActionResult AddPublisher([FromBody] ViewModels.PublisherVM publisherVM)
         {
             try

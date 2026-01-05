@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyBook.Data.Models;
-using MyBook.IRepositories;
-using MyBook.Repository;
+using PublicLibrary.Data.Models;
+using PublicLibrary.IRepositories;
+using PublicLibrary.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -54,7 +54,7 @@ namespace TestMyLibrary.TestServices
         public void Author_Add_ReturnNewAuthor()
         {
             //Arrange
-            var authorVM = new MyBook.ViewModels.AuthorVM()
+            var authorVM = new PublicLibrary.ViewModels.AuthorVM()
             {
                 FullName = "Ahmed Morad"
             };

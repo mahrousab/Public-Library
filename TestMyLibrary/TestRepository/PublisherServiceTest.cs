@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyBook.Data.Models;
-using MyBook.DTOS;
-using MyBook.Repository;
-using MyBook.ViewModels;
+using PublicLibrary.Data.Models;
+using PublicLibrary.DTOS;
+using PublicLibrary.Repository;
+using PublicLibrary.ViewModels;
 
 namespace TestMyLibrary.TestServices
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace MyBook.Data.Models
+namespace PublicLibrary.Data.Models
 {
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {

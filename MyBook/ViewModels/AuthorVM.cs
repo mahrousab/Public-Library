@@ -1,4 +1,4 @@
-﻿namespace MyBook.ViewModels
+﻿namespace PublicLibrary.ViewModels
 {
     public class AuthorVM
     {

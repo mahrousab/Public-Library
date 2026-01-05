@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace MyBook.Execption
+namespace PublicLibrary.Execption
 {
     public class PublisherNameException : Exception
     {

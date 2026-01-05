@@ -1,7 +1,7 @@
-﻿using MyBook.Data.Models;
-using MyBook.IRepositories;
+﻿using PublicLibrary.Data.Models;
+using PublicLibrary.IRepositories;
 
-namespace MyBook.Repository
+namespace PublicLibrary.Repository
 {
     public class LogRepository : ILogRepository
     {

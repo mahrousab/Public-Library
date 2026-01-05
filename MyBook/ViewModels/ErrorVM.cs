@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 
-namespace MyBook.ViewModels
+namespace PublicLibrary.ViewModels
 {
     public class ErrorVM
     {

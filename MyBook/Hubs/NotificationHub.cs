@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 
-namespace MyBook.Hubs
+namespace PublicLibrary.Hubs
 {
     public class NotificationHub :Hub
     {

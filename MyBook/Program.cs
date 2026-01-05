@@ -1,12 +1,18 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
-using MyBook.Data.Models;
-using MyBook.Exceptions;
-using MyBook.Hubs;
-using MyBook.IRepositories;
-using MyBook.Repository;
+using Microsoft.IdentityModel.Tokens;
+using PublicLibrary.Data.Models;
+using PublicLibrary.DTOS;
+using PublicLibrary.Exceptions;
+using PublicLibrary.Hubs;
+using PublicLibrary.IRepositories;
+using PublicLibrary.Repository;
+using PublicLibrary.Seeding;
 using Serilog;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -82,6 +88,62 @@ Serilog.Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 builder.Services.AddControllers();
+//Add Identity 
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+})
+.AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
+
+#region JWT Settings
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("Jwt"));
+
+var jwtSettings = builder.Configuration
+    .GetSection("Jwt")
+    .Get<JwtSettings>();
+
+var key = Encoding.UTF8.GetBytes(jwtSettings.Key);
+#endregion#region Authentication (JWT)
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = true;
+    options.SaveToken = true;
+
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+
+        ValidIssuer = jwtSettings.Issuer,
+        ValidAudience = jwtSettings.Audience,
+
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
+builder.Services.AddScoped<IJwtRepository, JwtRepository>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ManageBooks", policy =>
+        policy.RequireRole(
+            UserRoles.Admin,
+            UserRoles.Publisher));
+});
+
 
 var app = builder.Build();
 
@@ -96,8 +158,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseHttpsRedirection();
+using (var scope = app.Services.CreateScope())
+{
+    await RoleSeeder.SeedRolesAsync(scope.ServiceProvider);
+}
 
+
+app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapHub<NotificationHub>("/hubs/notifications");
 

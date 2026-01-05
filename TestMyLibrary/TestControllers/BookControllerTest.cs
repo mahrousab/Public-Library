@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyBook.Controllers;
-using MyBook.Data.Models;
-using MyBook.Repository;
+using PublicLibrary.Controllers;
+using PublicLibrary.Data.Models;
+using PublicLibrary.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -113,7 +113,7 @@ namespace TestMyLibrary.TestControllers
         public void AddBook_ShouldAddNewBook()
         {
             // Arrange
-            var newBookVM = new MyBook.ViewModels.BookVM
+            var newBookVM = new PublicLibrary.ViewModels.BookVM
             {
                 Title = "Brave New World",
                 Description = "A dystopian novel by Aldous Huxley.",

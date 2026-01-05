@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MyBook.Migrations
+namespace PublicLibrary.Migrations
 {
     /// <inheritdoc />
     public partial class SeedingBooksData : Migration

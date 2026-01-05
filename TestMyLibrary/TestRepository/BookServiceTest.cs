@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyBook.Data.Models;
-using MyBook.Repository;
-using MyBook.ViewModels;
+using PublicLibrary.Data.Models;
+using PublicLibrary.Repository;
+using PublicLibrary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;

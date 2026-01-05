@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MyBook.IRepositories;
-using MyBook.Repository;
-using MyBook.ViewModels;
+using PublicLibrary.DTOS;
+using PublicLibrary.IRepositories;
+using PublicLibrary.Repository;
+using PublicLibrary.ViewModels;
 
-namespace MyBook.Controllers
+namespace PublicLibrary.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,6 +18,7 @@ namespace MyBook.Controllers
             _bookService = bookService;
         }
         [HttpPost("Add-Book-With-Authors")]
+        [Authorize(Roles = UserRoles.Admin)]
         public IActionResult AddBook([FromBody] BookVM book)
         {
             _bookService.AddBookWithAuthors(book);
